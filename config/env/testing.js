@@ -11,23 +11,25 @@
  */
 
 module.exports = {
-
-  log: { level: 'silent' },
-
-  models: { migrate: 'drop' },
-
-  hooks: {
-    grunt: false
+  log: { level: 'debug' },
+  models: {
+    connection: 'testing',
+    migrate: 'drop'
   },
-
+  connections: {
+    testing: {
+      adapter: 'waterline-sqlite3',
+      type: 'memory'
+    }
+  },
+  hooks: {
+    grunt: false,
+    views: false
+  },
   policies: {
-
     '*': ['basicAuth', 'passport', 'sessionAuth'],
-
     AuthController: { '*': [ 'passport' ] },
-
     UserController: { create: true }
-
-  }
-
+  },
+  port: 1448
 };

@@ -7,16 +7,16 @@ var bcrypt = require('bcryptjs');
  * @param {Function} next
  */
 function hashPassword (passport, next) {
+  var config = sails.config.auth.bcrypt;
+  var salt = config.salt || config.rounds;
   if (passport.password) {
-    var t0 = new Date().valueOf();
-    bcrypt.hash(passport.password, 8, function (err, hash) {
+    bcrypt.hash(passport.password, salt, function (err, hash) {
       if (err) {
+        delete passport.password;
         sails.log.error(err);
         throw err;
       }
       passport.password = hash;
-      var t1 = new Date().valueOf();
-      sails.log.silly('hashed password for user in', (t1 - t0), 'ms');
       next(null, passport);
     });
   }
@@ -54,6 +54,9 @@ var Passport = {
     // When the local strategy is employed, a password will be used as the
     // means of authentication along with either a username or an email.
     password: { type: 'string', minLength: 8 },
+    // accessToken is used to authenticate API requests. it is generated when a
+    // passport (with protocol 'local') is created for a user.
+    accessToken: { type: 'string' },
 
     // Provider fields: Provider, identifer and tokens
     //

@@ -1,19 +1,13 @@
 language: node_js
 node_js:
-  - '0.10'
-  - '0.12'
-
-sudo: false
-
+- '0.12'
 notifications:
   email: false
-
 deploy:
   provider: npm
-  email: me@traviswebb.com
+  email: hello@langa.io
   api_key:
-    secure: R+k+MLvkT++OwuGY3ruDBTuzfSVpG8BXv1jIyBXpp4qgfQ4lEfmtuj9A8/vT/Q1EKNeK+F7LULPHR9a2vjSHxotC9FyBNGPMU92QVAhhznRjhkS7kKSRX2RgCwG96w1sRmrYlw0AXN0f72UPuIaLAwRfCbvVc5/PzvxHtWIGFaY=
+    secure: eeSMpkSX5RYk4bA9+iv/hUUIlJ1sBRbhGG0rcuIi3oOly04qM3i4gysrhVQ+zdvPmPDI4RUOQDAZfI80+SDugxPK5O749usZcqpsHgu9saTozqWRf5jHnaurrpafjCfjU70MyNhkdIjSMWBA9qQe4E9hrnpS6sz8NtJVaPq44E4=
   on:
     tags: true
-    repo: tjwebb/sails-auth
-    all_branches: true
+    repo: langateam/sails-auth

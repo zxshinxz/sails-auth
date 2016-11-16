@@ -12,7 +12,6 @@ module.exports = {
     },
     email: {
       type: 'email',
-      notNull: true,
       unique: true,
       index: true
     },

@@ -1,10 +1,11 @@
 {
   "name": "sails-auth",
-  "version": "1.2.6",
+  "version": "2.2.0",
   "description": "Passport-based User Authentication system for sails.js applications.",
-  "main": "index.js",
+  "main": "dist/api/hooks/auth/index.js",
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha --reporter spec --compilers js:babel-core/register",
+    "prepublish": "gulp"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,10 @@
     "generator",
     "google",
     "facebook",
-    "twitter"
+    "twitter",
+    "linkedin",
+    "instagram",
+    "youtube"
   ],
   "author": "Travis Webb <me@traviswebb.com>",
   "license": "MIT",
@@ -32,36 +36,43 @@
   },
   "homepage": "https://github.com/tjwebb/sails-auth",
   "dependencies": {
-    "bcryptjs": "^2.1",
-    "passport": "^0.2.1",
-    "passport-http": "^0.2.2",
-    "passport-local": "^1.0.0",
-    "sails-generate-entities": "latest"
-  },
-  "optionalDependencies": {
-    "passport-facebook": "^1.0.3",
-    "passport-google-oauth": "^0.2.0",
-    "passport-twitter": "^1.0.2"
+    "base64url": "^2.0.0",
+    "bcryptjs": "^2.2",
+    "lodash": "^4.16",
+    "marlinspike": "^1.0",
+    "passport": "^0.3",
+    "passport-http": "^0.3",
+    "passport-http-bearer": "^1.0.1",
+    "passport-local": "^1.0.0"
   },
   "bundledDependencies": [
     "bcryptjs",
+    "lodash",
     "passport",
     "passport-http",
-    "passport-local"
+    "passport-local",
+    "passport-http-bearer"
   ],
   "devDependencies": {
-    "lodash": ">2.4.0",
-    "mocha": "^1.21.4",
-    "sails": ">0.10.0",
-    "sails-disk": "^0.10.7",
+    "babel": "^6.5.2",
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.14.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.2",
+    "mocha": "^3.1.0",
+    "sails": "^0.12.5",
     "socket.io-client": "^1.3.5",
-    "supertest": "^0.15.0"
-  },
-  "peerDependencies": {
-    "lodash": ">2.4.0"
+    "supertest": "^2.0.0",
+    "waterline-sqlite3": "^1.0.3"
   },
   "engines": {
-    "node": ">= 0.10",
-    "npm": ">= 2.3"
+    "node": ">= 0.12",
+    "npm": ">= 2.11"
+  },
+  "sails": {
+    "isHook": true,
+    "hookName": "auth"
   }
 }

@@ -1,8 +1,10 @@
+dist/
 .tmp/
 *.sw*
 # Logs
 logs
 *.log
+.idea/
 
 # Runtime data
 pids
